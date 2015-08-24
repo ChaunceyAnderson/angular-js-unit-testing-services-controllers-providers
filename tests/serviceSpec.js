@@ -2,6 +2,8 @@ describe('service tests', function(){
   var mockWindow, mockModalSvc, sampleSvcObj;
 
   beforeEach(function(){
+
+    //this mocks both of the dependent services
     module(function($provide){
       $provide.service('$window', function(){
         this.alert = jasmine.createSpy('alert');
@@ -11,10 +13,12 @@ describe('service tests', function(){
       });
     });
 
+    //load the angular module that contains our service
     module('services');
   });
 
   beforeEach(inject(function($window, modalSvc, sampleSvc){
+    //get references to all the objects
     mockWindow=$window;
     mockModalSvc=modalSvc;
     sampleSvcObj=sampleSvc;

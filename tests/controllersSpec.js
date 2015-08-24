@@ -2,6 +2,12 @@ describe('testing controllers', function(){
   var mockDataSvc, rootScope, scope, passPromise, firstController, secondController;
 
   beforeEach(function(){
+
+/*
+This mocks the dependent service
+Since the service contains an asynchronous method,
+ we need to mock that using the mocking promise technique
+*/
     module(function($provide){
       $provide.factory('dataSvc', ['$q', function($q){
         function save(data){
